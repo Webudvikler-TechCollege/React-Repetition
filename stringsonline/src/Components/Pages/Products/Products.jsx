@@ -4,6 +4,7 @@ import { Layout } from "../../App/Layout/Layout"
 export const Products = () => {
 	const { loginData } = useAuth();
 	return (
+		/* Komponent med props title */
 		<Layout title="Produkter">
 			{!loginData ? (
 				<p>Jeg er ikke logget ind</p>
