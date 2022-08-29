@@ -1,3 +1,4 @@
+import { Outlet, useParams } from "react-router-dom";
 import { useAuth } from "../../App/Auth/Auth"
 import { Layout } from "../../App/Layout/Layout"
 
@@ -17,7 +18,7 @@ export const Products = () => {
 			) : (
 				<p>Jeg er logget ind som {loginData.username}</p>
 			)}
-
+			<Outlet />
 		</Layout>
 	)
 }

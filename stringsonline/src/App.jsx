@@ -5,6 +5,7 @@ import { Footer } from './Components/Partials/Footer';
 import { Header } from './Components/Partials/Header';
 import { Main } from './Components/Partials/Main';
 import { NavBar } from './Components/Partials/NavBar';
+import { NavBarLeft } from './Components/Partials/NavBarLeft';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Header />
       <NavBar />
       <Main>
-        <p>Test af props.children</p>
+        <NavBarLeft />
         <AppRouter />
       </Main>
       <Footer />
