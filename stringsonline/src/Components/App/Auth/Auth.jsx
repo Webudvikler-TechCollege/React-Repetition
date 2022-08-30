@@ -2,7 +2,9 @@
  * Følgende kode laver et komponent (<AuthProvider>) som kan 
  * transportere data ned i gennem reacts komponent hieraki.
  * Det betyder at vi nemt kan hente en brugers logindata fra alle 
- * child components. Derfor skal AuthProvider komponentet placeres 
+ * child components via et useState hook i et højere rangerende 
+ * komponent. 
+ * Derfor skal AuthProvider komponentet placeres 
  * så højt som muligt i hierakiet - eksempelvis i filen /src/index.js
  * Filens custom hook (useAuth) bruges desuden på Login siden.
  */
@@ -32,7 +34,7 @@ const AuthProvider = ({ children }) => {
 	)
 }
 
-// Definerer context hook
+// Definerer custom hook
 // Gør at vi nemt kan kalde context
 // Eksempel: const { loginData } = useAuth()
 const useAuth = () => useContext(AuthContext);
