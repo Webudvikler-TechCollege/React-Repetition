@@ -7,7 +7,7 @@ export const Home = () => {
 		<Layout title="Velkommen til StringsOnline" description="StringsOnline sælger musikinstrumenter">
 			
 			{/* Alt inde i Layout komponentet er props.children */}
-			<p>Her kommer mine props children</p>
+			<p>Køb dine kvalitetsinstrumenter online!</p>
 
 		</Layout>
 	)

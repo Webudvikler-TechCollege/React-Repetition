@@ -6,9 +6,10 @@ import { BurgerMenu } from '../App/BurgerMenu/BurgerMenu'
 export const Header = () => {
 	return (
 		<header>
-			<span className="nav_with_logo">
-				<img src={logo} alt="" />
-				<span className="nav_inner_wrapper">
+			<span className="topnav_with_logo">
+				<Link to={'/'}><img src={logo} alt="" /></Link>
+				<span className="topnav_inner_wrapper">
+					{/* Her skal toppens navbar ligge */}
 					<Link to="/">Forside</Link>
 					<Link to="/sales">Salgs- og handelsbetingelser</Link>
 				</span>

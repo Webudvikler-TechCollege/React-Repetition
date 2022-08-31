@@ -3,6 +3,13 @@
 
 * {
   font-family: $font-family;
+  color: $secondary-color;
+  text-decoration: none;
+}
+
+h1 {
+  color: $secondary-color;
+  margin-top: 0px;
 }
 
 body {
@@ -19,7 +26,7 @@ header {
   position: sticky;
   height: 20vh;
 
-  .nav_with_logo {
+  .topnav_with_logo {
     width: fit-content;
     position: absolute;
     left: 5%;
@@ -30,8 +37,7 @@ header {
   
   }
 
-
-  .nav_inner_wrapper {
+  .topnav_inner_wrapper {
     @include border;
     position: absolute;
     height: 57px;
@@ -53,4 +59,35 @@ header {
     }
   }
 }
+
+main {
+  @include flex;
+
+  nav {
+    width: 25rem;
+    ul {
+      @include clear-list;
+
+      ul {
+        margin-left: 2rem;
+      }
+    }
+
+    a {
+      display: block;
+      color: $primary-color;
+      padding-left: 1rem;
+    }
+  }
+
+  section {
+    @include container-full;
+  }
+}
+
+footer {
+  margin-top: 2rem;
+  border-top: solid 1px $secondary-color
+}
+
 

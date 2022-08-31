@@ -48,4 +48,9 @@
   @mixin image-full-width {
     width: 100%;
   }
+
+  @mixin clear-list {
+    list-style-type: none;
+    @include reset;
+  }
   

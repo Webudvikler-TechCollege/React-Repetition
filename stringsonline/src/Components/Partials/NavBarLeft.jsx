@@ -1,49 +1,47 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom"
-import axios from 'axios'
+import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const NavBarLeft = () => {
-	const [ parentGroups, setParentGroups ] = useState([])
-	const [ curId, setCurId ] = useState()
-	const [ subGroups, setSubGroups ] = useState([])
+	const [ parentGroups, setParentGroups ] = useState([]);
+	const [ subGroups, setSubGroups ] = useState([]);
+	const [ curId, setCurId ] = useState(0)
 
 	useEffect(() => {
 		const getData = async () => {
-			const result = await axios.get('https://api.mediehuset.net/stringsonline/')
-			setParentGroups(result.data.productgroups.items)
+			const result = await axios.get('https://api.mediehuset.net/stringsonline/groups')
+			setParentGroups(result.data.items)
 		}
 		getData()
 	}, [setParentGroups])
 
-	const getSubMenu = async group_id => {
+	const getSubmenu = async group_id => {
 		const result = await axios.get(`https://api.mediehuset.net/stringsonline/groups/${group_id}`)
-		setSubGroups(result.data.items.subgroups)
 		setCurId(group_id)
+		setSubGroups(result.data.items.subgroups);
 	}
 
 	return (
-		<nav>
-			<ul>	
-				{parentGroups && parentGroups.map(item => {
-					return (
-						<li key={item.id}>
-							<Link to={'./'} onClick={() => getSubMenu(item.id)}>
-								{item.title}</Link>
-								{item.id === curId ? (
-								<ul>
-									{subGroups && subGroups.map(subgroup => {
-										return (
-											<li key={subgroup.id}>
-												<Link to={'./'}>{subgroup.title}</Link></li>
-										)
-									})}
-								</ul>
-							) : null
-							}
-						</li>
-					)
-				})}
-			</ul>
-		</nav>
+		<ul>
+			{parentGroups && parentGroups.map(group => {
+				return (
+					<li key={group.id}>
+						<Link to={'./'} onClick={() => getSubmenu(group.id)} title={group.description}>{group.title}</Link>
+						{group.id === curId && (
+							<ul>
+								{subGroups && subGroups.map(subgroup => {
+									return (
+										<li key={subgroup.id}>
+											<Link to={`/products/${subgroup.id}`}>{subgroup.title}</Link>
+										</li>
+									)
+								})}
+							</ul>
+						)}
+					</li>
+				)
+			})}
+		</ul>
 	)
 }

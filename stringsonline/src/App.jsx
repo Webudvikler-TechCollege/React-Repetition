@@ -13,8 +13,12 @@ function App() {
       <div className="pageContainer">
         <Header />
         <Main>
-          <NavBarLeft />
-          <AppRouter />
+          <nav>
+            <NavBarLeft />
+          </nav>
+          <section>
+            <AppRouter />
+          </section>
         </Main>
         <Footer />
       </div>
