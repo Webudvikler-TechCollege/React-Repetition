@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom'
 import Style from './ProductListItem.module.scss'
 
+/**
+ * Function Component til visning af produkter i liste
+ * @param {object} props - object med produkt data fra 
+ * komponent kald
+ * @returns React Function Component
+ */
 export const ProductListItem = props => {
 	return (
+		// 
 		<div className={Style.product_list_item_wrapper}>
 			<span>
 				<figure>
