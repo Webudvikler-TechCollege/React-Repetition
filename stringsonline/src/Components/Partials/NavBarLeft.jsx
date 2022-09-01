@@ -27,7 +27,7 @@ export const NavBarLeft = () => {
 			{parentGroups && parentGroups.map(group => {
 				return (
 					<li key={group.id}>
-						<Link to={'./'} onClick={() => getSubmenu(group.id)} title={group.description}>{group.title}</Link>
+						<Link to={'/products'} onClick={() => getSubmenu(group.id)} title={group.description}>{group.title}</Link>
 						{group.id === curId && (
 							<ul>
 								{subGroups && subGroups.map(subgroup => {
