@@ -7,10 +7,11 @@ import { ProductListItem } from "./ProductListItem"
 
 // Function Component til Produktlister
 export const ProductList = () => {
-	// deconstructer vars til api data fra useState hook
-	const [ productList, setProductList ] = useState([])
 	// deconstructor group_id fra url params hook
 	const { group_id } = useParams(0)
+
+	// deconstructer vars til api data fra useState hook
+	const [ productList, setProductList ] = useState([])
 
 	// useEffect hook til styring af renders
 	useEffect(() => {
