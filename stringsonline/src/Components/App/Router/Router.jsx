@@ -5,6 +5,7 @@ import { Extranet } from '../../Pages/Extranet/Extranet'
 import { Search } from '../../Pages/Search/Search'
 import { ProductList } from '../../Pages/Products/ProductList'
 import { ProductDetails } from '../../Pages/Products/ProductDetails'
+import { Products } from '../../Pages/Products/Products'
 
 // Function Component til router
 export const AppRouter = () => {
@@ -12,7 +13,7 @@ export const AppRouter = () => {
 		<Routes>
 			<Route index element={<Home />}></Route>
 			<Route path="/products">
-				<Route index element={<ProductList />}></Route>
+				<Route index element={<Products />}></Route>
 				<Route path=":group_id">
 					<Route index element={<ProductList />}></Route>
 					<Route path=":product_id" element={<ProductDetails />}></Route>
