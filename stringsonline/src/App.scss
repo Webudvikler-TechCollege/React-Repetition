@@ -1,10 +1,13 @@
-@import "./Assets/scss/vars.scss";
-@import "./Assets/scss/mixins.scss";
+@import "./Assets/scss/bundles.scss";
 
 * {
   font-family: $font-family;
   color: $secondary-color;
   text-decoration: none;
+}
+
+.nl2br {
+  @include nl2br
 }
 
 h1 {
