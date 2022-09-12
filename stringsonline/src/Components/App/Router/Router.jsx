@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom'
 import { Home } from '../../Pages/Home/Home'
 import { Login } from '../../Pages/Login/Login'
 import { Extranet } from '../../Pages/Extranet/Extranet'
-import { Search } from '../../Pages/Search/Search'
 import { ProductList } from '../../Pages/Products/ProductList'
 import { ProductDetails } from '../../Pages/Products/ProductDetails'
 import { Products } from '../../Pages/Products/Products'
@@ -19,7 +18,6 @@ export const AppRouter = () => {
 					<Route path=":product_id" element={<ProductDetails />}></Route>
 				</Route>
 			</Route>
-			<Route path="/search" element={<Search />}></Route>
 			<Route path="/extranet" element={<Extranet />}></Route>
 			<Route path="/login" element={<Login />}></Route>
 		</Routes>

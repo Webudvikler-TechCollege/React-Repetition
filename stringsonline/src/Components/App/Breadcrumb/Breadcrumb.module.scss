@@ -1,0 +1,9 @@
+@import '../../../Assets/scss/bundles.scss';
+
+.breadcrumb {
+	@include clear-list;
+
+	li {
+		display: inline-block;
+	}
+}
