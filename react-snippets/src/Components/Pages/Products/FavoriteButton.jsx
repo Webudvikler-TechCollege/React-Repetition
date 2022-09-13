@@ -10,23 +10,27 @@ const FavoriteButton = ({ product_id }) => {
 	const [ myFavorites, setMyFavorites ] = useState([])
 
 	/**
+	 * Object var til api info
+	 */
+	const api_info = {
+		endpoint: 'https://api.mediehuset.net/snippets/favorites',
+		options: { headers: {
+			Authorization: `Bearer ${loginData.access_token}`
+		}}
+	}
+
+	/**
 	 * UseEffect Hook til styring af liste over favoritter
 	 */
 	useEffect(() => {
 		const getFavorites = async () => {
-			const options = {
-				headers: {
-					Authorization: `Bearer ${loginData.access_token}`
-				}
-			}
-			const endpoint = "https://api.mediehuset.net/snippets/favorites"
-			const result = await axios.get(endpoint, options)
+			const result = await axios.get(api_info.endpoint, api_info.options)
 			if(result.data.items) {
 				setMyFavorites(result.data.items)
 			}
 		}
 		getFavorites()
-	}, [loginData.access_token])
+	}, [api_info.endpoint, api_info.options, loginData.access_token])
 
 	/**
 	 * UseEffect Hook til styring af favorit status ud fra product_id
@@ -41,15 +45,9 @@ const FavoriteButton = ({ product_id }) => {
 	const addFavorite = async () => {
 		setIsFavorite(true)
 
-		const options = {
-			headers: {
-				Authorization: `Bearer ${loginData.access_token}`
-			}
-		}
-		const endpoint = "https://api.mediehuset.net/snippets/favorites"
 		const formData = new FormData();
 		formData.append('product_id',product_id)
-		await axios.post(endpoint, formData, options)		
+		await axios.post(api_info.endpoint, formData, api_info.options)		
 	}
 
 	/**
@@ -58,14 +56,7 @@ const FavoriteButton = ({ product_id }) => {
 	const removeFavorite = async () => {
 		setIsFavorite(false)
 
-		const options = {
-			headers: {
-				Authorization: `Bearer ${loginData.access_token}`
-			}
-		}
-		const endpoint = `https://api.mediehuset.net/snippets/favorites/${product_id}`
-		await axios.delete(endpoint, options)
-
+		await axios.delete(`${api_info.endpoint}/${product_id}`, api_info.options)
 	}
 
 	return (
