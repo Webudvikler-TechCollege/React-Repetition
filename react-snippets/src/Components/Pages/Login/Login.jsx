@@ -2,6 +2,7 @@ import { Layout } from "../../App/Layout/Layout"
 import { useForm } from 'react-hook-form'
 import { useAuth } from "../../App/Auth/Auth"
 import axios from 'axios'
+import { useState } from "react"
 
 // Function Component til login
 export const Login = () => {
@@ -12,13 +13,21 @@ export const Login = () => {
 	// Destructer vars fra useAuth
 	const { loginData, setLoginData } = useAuth()
 
+	const [ message, setMessage ] = useState('');
+
 	// Definerer funktion til at kalde api med form data
 	const sendLoginRequest = async data => {
 		const formData = new FormData();
 		formData.append("username", data.username)
 		formData.append("password", data.password)
-		const result = await axios.post('https://api.mediehuset.net/token', formData)
-		handleSessionData(result.data);
+		try {
+			const result = await axios.post('https://api.mediehuset.net/token', formData)
+			console.log(result.data)
+			handleSessionData(result.data);	
+		} 
+		catch(err) {
+			setMessage('Kunne ikke logge ind!')
+		}
 	}
 
 	// Definerer funktion til at håndtere form data til session storage
@@ -63,6 +72,9 @@ export const Login = () => {
 					)}
 
 				</div>
+				{message && (
+					<div>{message}</div>
+				)}
 				<div>
 					<button>Send</button>
 				</div>
