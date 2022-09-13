@@ -13,6 +13,7 @@ export const Login = () => {
 	// Destructer vars fra useAuth
 	const { loginData, setLoginData } = useAuth()
 
+	// Var til fejlmeddelelse
 	const [ message, setMessage ] = useState('');
 
 	// Definerer funktion til at kalde api med form data
@@ -26,6 +27,7 @@ export const Login = () => {
 			handleSessionData(result.data);	
 		} 
 		catch(err) {
+			/* Sætter bedsked var hvis der er en fejl */
 			setMessage('Kunne ikke logge ind!')
 		}
 	}
@@ -72,9 +74,12 @@ export const Login = () => {
 					)}
 
 				</div>
+
+				{/* Tjekker om besked er true og viser den */}
 				{message && (
 					<div>{message}</div>
 				)}
+
 				<div>
 					<button>Send</button>
 				</div>
