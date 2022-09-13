@@ -1,0 +1,18 @@
+@import "../../../Assets/scss/vars.scss";
+@import "../../../Assets/scss/mixins.scss";
+
+.product_list_item_wrapper {
+	@include grid;
+	grid-template-columns: 20% 40% 40%;
+	overflow-y: auto;
+	border-top: solid 1px #000;
+
+	span {
+		text-align: left;
+	}
+
+	img {
+		object-fit: cover;
+		max-width: 100px;
+	}
+}
