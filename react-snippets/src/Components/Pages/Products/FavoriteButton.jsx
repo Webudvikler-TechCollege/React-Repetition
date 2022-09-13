@@ -9,6 +9,9 @@ const FavoriteButton = ({ product_id }) => {
 	const [ isFavorite, setIsFavorite ] = useState(false)
 	const [ myFavorites, setMyFavorites ] = useState([])
 
+	/**
+	 * UseEffect Hook til styring af liste over favoritter
+	 */
 	useEffect(() => {
 		const getFavorites = async () => {
 			const options = {
@@ -25,11 +28,16 @@ const FavoriteButton = ({ product_id }) => {
 		getFavorites()
 	}, [loginData.access_token])
 
+	/**
+	 * UseEffect Hook til styring af favorit status ud fra product_id
+	 */
 	useEffect(() => {
-		const isMyFavorite = myFavorites.some(elm => elm.product_id === product_id)
-		setIsFavorite(isMyFavorite)
+		setIsFavorite(myFavorites.some(elm => elm.product_id === product_id))
 	},[myFavorites, product_id])
 
+	/**
+	 * Tilføj favorit
+	 */
 	const addFavorite = async () => {
 		setIsFavorite(true)
 
@@ -44,6 +52,9 @@ const FavoriteButton = ({ product_id }) => {
 		await axios.post(endpoint, formData, options)		
 	}
 
+	/**
+	 * Fjern favorit
+	 */
 	const removeFavorite = async () => {
 		setIsFavorite(false)
 
