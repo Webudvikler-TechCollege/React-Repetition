@@ -7,7 +7,7 @@ import { useCart } from '../Context/CartProvider'
 const CartButton = ({product_id}) => {
 	const { loginData } = useAuth()
 	const { cartLines } = useCart();
-	const [ quantityInCart, setQuantityInCart ] = useState(0)
+	const [ quantityInCart, setQuantityInCart ] = useState(1)
 	const { register, handleSubmit } = useForm()
 
 	useEffect(() => {
@@ -15,7 +15,6 @@ const CartButton = ({product_id}) => {
 			const objInCart = cartLines.find(item => item.product_id === product_id);
 		
 			if(objInCart) {
-				
 				setQuantityInCart(objInCart.quantity);
 			}	
 		}
@@ -28,7 +27,7 @@ const CartButton = ({product_id}) => {
 	return (
 		<form onSubmit={handleSubmit(handleCart)}>
 			<input type="hidden" defaultValue={product_id} {...register('product_id')} />
-			<input type="number" defaultValue={quantityInCart} {...register('quantity', { required: true })}></input>
+			<input type="number" value={quantityInCart} {...register('quantity', { required: true })}></input>
 			<button>Læg i kurv</button>
 		</form>
 	)
