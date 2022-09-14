@@ -1,0 +1,51 @@
+import axios from 'axios'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { useAuth } from '../Auth/Auth'
+
+const CartButton = ({product_id}) => {
+	const { loginData } = useAuth()
+	const { register, handleSubmit } = useForm()
+
+	const AddToCart = async (data, e) => {
+
+		const endpoint = 'https://api.mediehuset.net/snippets/cart'
+		const options = {
+			headers: {
+				Authorization: `Bearer ${loginData.access_token}`
+			}
+		}
+
+		try {
+			const result = await axios.get(endpoint, options)
+			const cartItems = (result.data.cartlines) ? result.data.cartlines : []
+			const exist = cartItems.find(item => item.product_id === product_id)
+			
+			if(exist) {
+				const urlParams = new URLSearchParams()
+				urlParams.append('product_id', product_id)
+				urlParams.append('quantity', data.quantity)
+				await axios.put(endpoint, urlParams, options)
+				console.log('Produktet er opdateret')
+			} else {
+				const formData = new FormData(e.target);
+				await axios.post(endpoint, formData, options)
+				console.log('Produktet er oprettet i kurven')
+			}
+
+		} catch (error) {
+			
+		}
+
+	}
+
+	return (
+		<form onSubmit={handleSubmit(AddToCart)}>
+			<input type="hidden" value={product_id} {...register('product_id')} />
+			<input type="number" defaultValue={1} {...register('quantity', { required: true })} />
+			<button>Læg i kurv</button>
+		</form>
+	);
+}
+
+export default CartButton;

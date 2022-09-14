@@ -5,7 +5,7 @@ import { Layout } from "../../App/Layout/Layout"
 import { Link } from 'react-router-dom'
 import FavoriteButton from './FavoriteButton'
 import Style from './ProductList.module.scss'
-//import { ProductListItem } from "./ProductListItem"
+import CartButton from "../../App/Cart/AddToCart"
 
 // Function Component til Produktlister
 const ProductList = () => {
@@ -63,6 +63,7 @@ const ProductListItem = props => {
 			<span>
 				<p>Pris: {props.data.price} DKK</p>
 				<FavoriteButton product_id={props.data.id} />
+				<CartButton product_id={props.data.id} />
 			</span>
 			
 		</div>		
