@@ -1,6 +1,5 @@
 import axios from "axios"
-import { useEffect } from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Layout } from "../../App/Layout/Layout"
 import { Link } from 'react-router-dom'
 import FavoriteButton from '../../App/Favorites/FavoriteButton'
@@ -24,6 +23,7 @@ const ProductList = () => {
 	}, 
 	// Dependency array med group_id - hvis det ændres renderes komponenten
 	[setProductList])
+
 
 	return (
 		// Kalder layout komponent med title og description

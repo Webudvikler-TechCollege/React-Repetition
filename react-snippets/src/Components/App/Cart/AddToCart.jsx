@@ -39,7 +39,7 @@ const CartButton = ({product_id}) => {
 		urlParams.append('product_id', product_id)
 		urlParams.append('quantity', newQuantity)
 		if(quantityInCart) {
-			console.log(1234);
+			//console.log(1234);
 			await axios.delete(`${endpoint}/${product_id}`, options)
 		}
 		await axios.post(endpoint, urlParams, options)

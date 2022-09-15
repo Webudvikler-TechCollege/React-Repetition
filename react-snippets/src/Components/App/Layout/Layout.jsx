@@ -3,7 +3,6 @@ import { useEffect } from "react"
 // Function Component til side hoved layout
 const Layout = props => {
 	const hidetitle = (props.hidetitle) ? props.hidetitle : false;
-	console.log(hidetitle);
 
 	// useEffect renderer når title eller description skifter værdi
 	useEffect(() => {
