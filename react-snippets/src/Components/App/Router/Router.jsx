@@ -15,7 +15,7 @@ export const AppRouter = () => {
 				<Route index element={<Products />}></Route>
 				<Route path=":product_id" element={<ProductDetails />}></Route>
 			</Route>
-			<Route path="/comments/response" element={<CommentsResponse />}></Route>
+			<Route path="/comments/response/:product_id" element={<CommentsResponse />}></Route>
 			<Route path="/extranet" element={<Extranet />}></Route>
 			<Route path="/login" element={<Login />}></Route>
 		</Routes>
