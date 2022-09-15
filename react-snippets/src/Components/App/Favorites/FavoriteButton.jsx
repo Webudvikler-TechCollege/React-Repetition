@@ -9,6 +9,7 @@ import { useFavorites } from "../Context/FavoriteProvider"
  * Knap komponent som kan tilføje og fjerne et 
  * produkt fra en favorit liste.
  * Anvender FavoriteProvider med useContext metode
+ * Kræver login
  * @param {*} param 
  * @returns 
  */
