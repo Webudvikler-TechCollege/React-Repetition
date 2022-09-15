@@ -3,7 +3,7 @@ import { ProductList } from "./ProductList"
 
 export const Products = () => {
 	return (
-		<Layout title="Produkter" description="Eksempel">
+		<Layout title="Produkter" description="Eksempel" hidetitle={true}>
 			<p>Se vores udvalg</p>
 			<ProductList />
 		</Layout>
