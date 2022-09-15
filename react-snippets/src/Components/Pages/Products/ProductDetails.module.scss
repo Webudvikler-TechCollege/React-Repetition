@@ -1,0 +1,9 @@
+@import "../../../Assets/scss/vars.scss";
+@import "../../../Assets/scss/mixins.scss";
+
+.details {
+	img {
+		object-fit: cover;
+		max-width: 100px;
+	}
+}

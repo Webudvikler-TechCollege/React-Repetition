@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { Layout } from "../../App/Layout/Layout"
 import { Link } from 'react-router-dom'
-import FavoriteButton from './FavoriteButton'
+import FavoriteButton from '../../App/Favorites/FavoriteButton'
 import Style from './ProductList.module.scss'
 import CartButton from "../../App/Cart/AddToCart"
 
