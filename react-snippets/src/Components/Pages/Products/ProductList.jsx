@@ -3,8 +3,8 @@ import { useEffect, useState } from "react"
 import { Layout } from "../../App/Layout/Layout"
 import { Link } from 'react-router-dom'
 import FavoriteButton from '../../App/Favorites/FavoriteButton'
+import CartButton from "../../App/Cart/CartButton"
 import Style from './ProductList.module.scss'
-import CartButton from "../../App/Cart/AddToCart"
 
 // Function Component til Produktlister
 const ProductList = () => {
