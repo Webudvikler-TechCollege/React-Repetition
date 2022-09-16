@@ -1,4 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+/src/Components/App/_Breadcrumb
+/src/Components/App/_Ratings
 
 # dependencies
 /node_modules
