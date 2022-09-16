@@ -5,6 +5,8 @@ import { Extranet } from '../../Pages/Extranet/Extranet'
 import { CommentsResponse } from '../Comments/Comments'
 import { ProductDetails } from '../../Pages/Products/ProductDetails'
 import { Products } from '../../Pages/Products/Products'
+import AdmCommentList from '../../Pages/Adminpanel/AdmCommentList'
+import AdmCommentEdit from '../../Pages/Adminpanel/AdmCommentEdit'
 
 // Function Component til router
 export const AppRouter = () => {
@@ -18,6 +20,8 @@ export const AppRouter = () => {
 			<Route path="/comments/response/:product_id" element={<CommentsResponse />}></Route>
 			<Route path="/extranet" element={<Extranet />}></Route>
 			<Route path="/login" element={<Login />}></Route>
+			<Route path="/admin" element={<AdmCommentList />}></Route>
+			<Route path="/admin/:comment_id" element={<AdmCommentEdit />}></Route>
 		</Routes>
 	)
 }
