@@ -2,6 +2,7 @@ import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "../Auth/Auth";
 
+// Kalder context objekt
 const FavoriteContext = createContext()
 
 const FavoriteProvider = ({children}) => {

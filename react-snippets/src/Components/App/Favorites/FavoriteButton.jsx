@@ -27,7 +27,7 @@ const FavoriteButton = ({ product_id }) => {
     if(favorites.length) {
 	  // Setter bool efter om produkt ligger i listen over favoritter
       setIsFavorite(() =>
-        favorites.some((item) => item.product_id === product_id)
+        favorites.some(item => item.product_id === product_id)
       )
     }
   }, [favorites, product_id])
