@@ -6,7 +6,7 @@ import { useAuth } from "../Auth/Auth"
 
 const CommentsForm = ({ product_id }) => {
   const navigate = useNavigate()
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, formState: { errors } } = useForm()
   const { loginData } = useAuth()
 
   const submitForm = async (data, e) => {
@@ -31,10 +31,18 @@ const CommentsForm = ({ product_id }) => {
       <div>
         <label htmlFor="title">Emne</label>
         <input type="text" {...register("title", { required: true })} />
+        {errors.title && <span>Du skal skrive en titel</span>}
+      </div>
+      <div>
+        <label htmlFor="email">Email</label>
+        <input type="email" {...register("email", { required: true, pattern: /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i })} />
+        {errors.email && errors.email.type === "required" && <span>Du skal skrive en email</span>}
+        {errors.email && errors.email.type === "pattern" && <span>Du skal skrive en gyldig email</span> }
       </div>
       <div>
         <label htmlFor="comment">Kommentar</label>
         <textarea {...register("comment", { required: true })} />
+        {errors.comment && <span>Du skal skrive en kommentar</span>}
       </div>
       <div>
         <button>Send</button>
