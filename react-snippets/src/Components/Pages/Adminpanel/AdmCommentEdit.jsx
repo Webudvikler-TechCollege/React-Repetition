@@ -15,21 +15,18 @@ const AdmCommentEdit = () => {
   const { loginData } = useAuth()
   const [commentData, setCommentData] = useState({})
 
-  const [titleValue, setTitleValue] = useState("")
-
   useEffect(() => {
     const getData = async () => {
-      const endpoint = `https://api.mediehuset.net/homelands/reviews`
+      const endpoint = `https://api.mediehuset.net/snippets/comments/admin`
       const options = {
         headers: {
-          Authorization: `Bearer ${loginData.access_token}`,
-        },
+          Authorization: `Bearer ${loginData.access_token}`
+        }
       }
 
       try {
         if (loginData.access_token) {
           const result = await axios.get(`${endpoint}/${comment_id}`, options)
-          //setCommentData(result.data);
           setCommentData(result.data)
         }
       } catch (err) {
@@ -40,7 +37,6 @@ const AdmCommentEdit = () => {
   }, [comment_id, loginData.access_token])
 
   const submitForm = async (data, e) => {
-
     const endpoint = "https://api.mediehuset.net/snippets/comments"
     const options = {
       headers: {
@@ -48,25 +44,27 @@ const AdmCommentEdit = () => {
       },
     }
 
-    const formData = new FormData(e.target)
-    console.log(...formData)
-	/*
-    const result = await axios.post(endpoint, formData, options)
-    if (result.data.status) {
-      navigate(`/comments/response/${data.product_id}`, { replace: true })
+    const urlParams = new URLSearchParams()
+    urlParams.append('id', data.id)
+    urlParams.append('title', data.title)
+    urlParams.append('comment', data.comment)
+    const result = await axios.put(endpoint, urlParams, options)
+    console.log(result);
+    if (result.status) {
+      navigate(`/admin`, { replace: true })
     }
-	*/
   }
 
   return (
     loginData.access_token && (
       <form onSubmit={handleSubmit(submitForm)}>
+        <input type="hidden" value={comment_id} {...register("id")} />
         <div>
           <label htmlFor="title">Emne</label>
           <input
             type="text"
-            defaultValue={commentData.title}
-			onChange={(e) => console.log(e.target.value)}
+            defaultValue={commentData.title} 
+            onChange={(e) => console.log(e.target.value)}
             {...register("title", { required: true })}
           />
           {errors.title && <span>Du skal skrive en titel</span>}
@@ -75,9 +73,9 @@ const AdmCommentEdit = () => {
           <label htmlFor="content">Kommentar</label>
           <textarea
             type="text"
-            defaultValue={commentData.content}
-			onChange={(e) => console.log(e.target.value)}
-            {...register("content", { required: true })}
+            defaultValue={commentData.comment}
+            onChange={(e) => console.log(e.target.value)}
+            {...register("comment", { required: true })}
           />
           {errors.content && <span>Du skal skrive en kommentar</span>}
         </div>
