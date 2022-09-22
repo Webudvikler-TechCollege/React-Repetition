@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form"
 
 /**
  * Form Eksempel
- * @param {*} param0 
- * @returns 
+ * @param {number} Destructuring assignment af item_id fra props objekt
+ * @returns HTML Form Element
  */
 const ExampleForm = ({ item_id }) => {
   // Destructoring Assignment fra form hooks
