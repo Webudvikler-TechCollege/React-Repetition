@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form"
  * @returns 
  */
 const ExampleForm = ({ item_id }) => {
-  // Destructor Item
+  // Destructoring Assignment fra form hooks
   const { register, handleSubmit, formState: { errors } } = useForm()
 
   /**
