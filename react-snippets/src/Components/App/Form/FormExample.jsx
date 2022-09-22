@@ -4,10 +4,12 @@ import { useForm } from "react-hook-form"
 /**
  * Form Eksempel
  * @param {number} Destructuring assignment af item_id fra props objekt
+ * Eksempel på kald af komponent: <FormElement item_id={5}>
  * @returns HTML Form Element
  */
-const ExampleForm = ({ item_id }) => {
-  // Destructoring Assignment fra form hooks
+const ExampleForm = props => { 
+  //console.log(props.item_id)
+  // Destructuring Assignment fra form hooks
   const { register, handleSubmit, formState: { errors } } = useForm()
 
   /**
@@ -29,7 +31,7 @@ const ExampleForm = ({ item_id }) => {
   return (
     <form onSubmit={handleSubmit(submitForm)}>
       {/* Skjult input med id til det element der skal kommenteres på */}
-      <input type="hidden" value={item_id} {...register("item_id")} />
+      <input type="hidden" value={props.item_id} {...register("item_id")} />
       <div>
         <label htmlFor="title">Input titel</label>
         {/* Tekst input til titel */}
